@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -40,5 +41,11 @@ public class RequestBodyStringController {
     public HttpEntity<String> requestBodyStringV3(HttpEntity<String> httpEntity) throws IOException {
         log.info("messageBody={}", httpEntity.getBody());
         return new HttpEntity<>("ok");
+    }
+
+    @PostMapping("/request-body-string-v4")
+    public String requestBodyStringV4(@RequestBody String messageBody){
+        log.info("messageBody={}", messageBody);
+        return "ok";
     }
 }
